@@ -33,25 +33,25 @@ setup(
     # web3.py doesn't work on 3.5.2 and less (https://github.com/ethereum/web3.py/issues/1012)
     python_requires='>=3.5.3,<4',
     install_requires=[
-        'web3==4.7.2',
-        'eth-utils==1.8.4',
-        'eth-abi==1.3.0',
+        'web3==5.20.0',
+        'eth-utils==1.10.0',
+        'eth-abi==2.1.1',
         # TODO: This has to be removed when "ModuleNotFoundError: No module named 'eth_utils.toolz'" is fixed at eth-abi
-        'python-dateutil==2.7.0',
-        'click==7.0',
-        'ethereum-dasm==0.1.4',
+        'python-dateutil==2.8.1',
+        'click==8.0.1',
+        'ethereum-dasm==0.1.5',
         'base58',
         'requests',
     ],
     extras_require={
         'streaming': [
-            'timeout-decorator==0.4.1',
+            'timeout-decorator==0.5.0',
             'google-cloud-pubsub==0.39.1',
-            'sqlalchemy==1.3.13',
-            'pg8000==1.13.2',
+            'sqlalchemy==1.4.18',
+            'pg8000==1.19.5',
         ],
         'dev': [
-            'pytest~=4.3.0'
+            'pytest~=6.2.0'
         ]
     },
     entry_points={

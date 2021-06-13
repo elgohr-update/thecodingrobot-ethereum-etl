@@ -86,7 +86,7 @@ class ExportTracesJob(BaseJob):
 
         # TODO: Change to traceFilter when this issue is fixed
         # https://github.com/paritytech/parity-ethereum/issues/9822
-        json_traces = self.web3.parity.traceBlock(block_number)
+        json_traces = self.web3.parity.trace_block(block_number)
 
         if json_traces is None:
             raise ValueError('Response from the node is None. Is the node fully synced?')

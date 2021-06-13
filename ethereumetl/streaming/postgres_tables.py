@@ -22,7 +22,7 @@
 
 from sqlalchemy import Table, Column, Integer, BigInteger, String, Numeric, MetaData, TIMESTAMP
 
-metadata = MetaData()
+metadata = MetaData(schema='data')
 
 # SQL schema is here https://github.com/blockchain-etl/ethereum-etl-postgres/tree/master/schema
 

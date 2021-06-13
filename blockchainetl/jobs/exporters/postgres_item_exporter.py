@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 import collections
+import ssl
 
 from sqlalchemy import create_engine
 
@@ -55,7 +56,11 @@ class PostgresItemExporter:
             yield self.converter.convert_item(item)
 
     def create_engine(self):
-        engine = create_engine(self.connection_url, echo=self.print_sql, pool_recycle=3600)
+        ssl_context = ssl.create_default_context()
+        ssl_context.check_hostname = False
+        ssl_context.verify_mode = ssl.CERT_NONE
+
+        engine = create_engine(self.connection_url, echo=self.print_sql, pool_recycle=3600, connect_args={'ssl_context': ssl_context})
         return engine
 
     def close(self):
