@@ -30,7 +30,7 @@ from blockchainetl.jobs.exporters.converters.composite_item_converter import Com
 
 class PostgresItemExporter:
 
-    def __init__(self, connection_url, item_type_to_insert_stmt_mapping, converters=(), print_sql=True):
+    def __init__(self, connection_url, item_type_to_insert_stmt_mapping, converters=(), print_sql=False):
         self.connection_url = connection_url
         self.item_type_to_insert_stmt_mapping = item_type_to_insert_stmt_mapping
         self.converter = CompositeItemConverter(converters)
