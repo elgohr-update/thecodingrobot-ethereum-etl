@@ -20,7 +20,8 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #  SOFTWARE.
 
-from sqlalchemy import Table, Column, Integer, BigInteger, String, Numeric, MetaData, TIMESTAMP
+from sqlalchemy import Table, Column, Integer, BigInteger, String, Numeric, MetaData, TIMESTAMP, ARRAY
+from sqlalchemy.sql.sqltypes import Boolean
 
 metadata = MetaData(schema='data')
 
@@ -122,4 +123,26 @@ TRACES = Table(
     Column('trace_id', String, primary_key=True),
 )
 
+CONTRACTS = Table(
+    'contracts', metadata,
+    Column('address', String, primary_key=True),
+    Column('bytecode', String),
+    Column('function_sighashes', ARRAY(String)),
+    Column('is_erc20', Boolean),
+    Column('is_erc721', Boolean),
+    Column('block_timestamp', TIMESTAMP),
+    Column('block_number', BigInteger),
+    Column('block_hash', String),
+)
 
+TOKENS = Table(
+    'tokens', metadata,
+    Column('address', String, primary_key=True),
+    Column('symbol', String),
+    Column('name', String),
+    Column('decimals', BigInteger),
+    Column('total_supply', String),
+    Column('block_timestamp', TIMESTAMP),
+    Column('block_number', BigInteger),
+    Column('block_hash', String),
+)
