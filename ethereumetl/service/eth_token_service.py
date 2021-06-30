@@ -53,11 +53,14 @@ class EthTokenService(object):
         return token
 
     def _get_first_result(self, *funcs):
-        for func in funcs:
-            result = self._call_contract_function(func)
-            if result is not None:
-                return result
-        return None
+        try:
+            for func in funcs:
+                result = self._call_contract_function(func)
+                if result is not None:
+                    return result
+            return None
+        except:
+            return None
 
     def _call_contract_function(self, func):
         # BadFunctionCallOutput exception happens if the token doesn't implement a particular function
